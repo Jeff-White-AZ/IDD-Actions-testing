@@ -1,2 +1,2 @@
 # IDD-Actions-testing
-Temporary repository while I learn how to use GitHub Actions to merge CSV files to create an Excel version of the DD
+This is a temporary (?) repository that I plan to use while learning how to use GitHub Actions to merge CSV files to create an Excel version of the DD. The underlying issue is that since GitHub doesn't allow users to view spreadsheets or compare versions in detail, we want to offer the ICASA Data Dictionary both as the Excel file and as a series of CSV files. However, if edits are made to the CSV files, we need to rebuild the Excel file. We plan do to do this with Actions, using a yaml file that calls an R script whenever there is a commit.
