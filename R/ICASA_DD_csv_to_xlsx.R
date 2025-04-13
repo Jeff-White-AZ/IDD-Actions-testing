@@ -1,0 +1,62 @@
+name: Reassemble CSVs and Upload XLSX
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.4.2'  # Specify the R version you need
+
+      - name: Install R dependencies
+        run: >
+          R -e "install.packages('openxlsx2')"  # Add other packages if necessary
+
+      - name: Prepare output directory
+        run: |
+          mkdir -p Data/output
+
+      - name: List files and directories before running R script
+        run: |
+          echo "Listing all files and directories recursively:"
+          ls -lR
+          echo "Checking the contents of the root directory:"
+          ls -lR .
+          echo "Checking the contents of the R directory:"
+          ls -lR R
+          echo "Checking the contents of the Data directory:"
+          ls -l Data
+          echo "Checking the contents of the Data/output directory:"
+          ls -l Data/output
+
+      - name: Run R script to reassemble CSVs
+        run: Rscript R/ICASA_DD_csv_to_xlsx.R
+
+      - name: Debug: List files post script
+        run: |
+          echo "Listing all files and directories recursively after script:"
+          ls -lR
+          echo "Checking the contents of Data/output directory:"
+          ls -l Data/output
+          echo "Checking the contents of Data directory:"
+          ls -l Data
+
+      - name: Upload reassembled XLSX file
+        uses: actions/upload-artifact@v4
+        with:
+          name: reassembled-xlsx
+          path: Data/output/*.xlsx  # Adjust the path to the actual XLSX file location
