@@ -26,6 +26,9 @@ jobs:
       - name: Run R script to reassemble CSVs
         run: Rscript R/ICASA_DD_csv_to_xlsx.R
 
+      - name: Debug: List files
+        run: ls -lR # List all files and directories recursively
+
       - name: Upload reassembled XLSX file
         uses: actions/upload-artifact@v3
         with:
