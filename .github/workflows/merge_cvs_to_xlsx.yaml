@@ -24,7 +24,7 @@ jobs:
           Rscript -e 'install.packages(c("openxlsx2”))' 
 
       - name: Run R script to reassemble CSVs
-        run: Rscript ICASA_DD_csv_to_xlsx.R
+        run: Rscript R/ICASA_DD_csv_to_xlsx.R
 
       - name: Upload reassembled XLSX file
         uses: actions/upload-artifact@v3
