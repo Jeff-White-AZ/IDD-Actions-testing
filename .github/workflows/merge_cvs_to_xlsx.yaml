@@ -31,7 +31,7 @@ jobs:
       run: ls -lR  # List all files and directories recursively
 
     - name: Upload reassembled XLSX file
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v3.1.1
       with:
         name: reassembled-xlsx
         path: Data/output/*.xlsx  # Adjust the path to the actual XLSX file location
