@@ -29,6 +29,19 @@ jobs:
 
     - name: Debug:List files
       run: ls -lR  # List all files and directories recursively
+      
+    - name: List files and directories before running R script
+      run: |
+          echo "Listing all files and directories recursively:"
+          ls -lR
+          echo "Checking the contents of the root directory:"
+          ls -lR .
+          echo "Checking the contents of the R directory:"
+          ls -lR R
+          echo "Checking the contents of the Data directory:"
+          ls -l Data
+          echo "Checking the contents of the Data/output directory:"
+          ls -l Data/output
 
     - name: Upload reassembled XLSX file
       uses: actions/upload-artifact@v4
