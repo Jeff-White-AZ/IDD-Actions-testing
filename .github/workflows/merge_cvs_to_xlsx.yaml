@@ -29,14 +29,14 @@ jobs:
       - name: Upload reassembled XLSX file
         uses: actions/upload-artifact@v3
         with:
-          name: ICASA_Data_Dictionary.xlsx
-          path: ICASA_Data_Dictionary.xlsx # Adjust if your output name is different
+          name: Combined_CSVs.xlsx
+          path: Combined_CSVs.xlsx # Adjust if your output name is different
 
       - name: Commit and push the updated XLSX (Optional)
         if: success() # Only if the previous step was successful
         run: |
           git config --local user.email "github-actions@github.com"
           git config --local user.name "GitHub Actions"
-          git add ICASA_Data_Dictionary.xlsx # Add the file
+          git add Combined_CSVs.xlsx # Add the file
           git commit -m "Update ICASA Data Dictionary XLSX"
           git push
