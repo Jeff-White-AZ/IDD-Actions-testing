@@ -110,7 +110,7 @@ wb$set_bookview(active_tab = 0, first_sheet = 0)
 
 # 6.2 Save the final file
 print("Saving workbook")
-saved_xlsx <- file.path("..", "Combined_CSVs.xlsx")
+saved_xlsx <- file.path("Data/output", "Combined_CSVs.xlsx")
 wb_save(wb, saved_xlsx)
 
 # 5. End script with message giving location of the CSV files. =================
