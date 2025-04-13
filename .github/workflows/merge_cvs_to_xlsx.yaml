@@ -1,0 +1,42 @@
+name: Reassemble ICASA Data Dictionary
+
+on:
+  push:
+    branches: [ main ] # Or specify other branches you want to trigger this on
+  pull_request: # Add this if you want it to run on PRs as well
+    branches: [ main ]
+
+jobs:
+  reassemble_dd:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.4.2' # Or your desired R version. UPDATE as needed.
+
+      - name: Install required R packages
+        run: |
+          Rscript -e 'install.packages(c("openxlsx2”))' 
+
+      - name: Run R script to reassemble CSVs
+        run: Rscript ICASA_DD_csv_to_xlsx.R
+
+      - name: Upload reassembled XLSX file
+        uses: actions/upload-artifact@v3
+        with:
+          name: ICASA_Data_Dictionary.xlsx
+          path: ICASA_Data_Dictionary.xlsx # Adjust if your output name is different
+
+      - name: Commit and push the updated XLSX (Optional)
+        if: success() # Only if the previous step was successful
+        run: |
+          git config --local user.email "github-actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add ICASA_Data_Dictionary.xlsx # Add the file
+          git commit -m "Update ICASA Data Dictionary XLSX"
+          git push
