@@ -20,14 +20,14 @@ jobs:
 
     - name: Install R dependencies
       run: |
-        R -e "install.packages('package-you-need')"  # Add other packages if necessary
+        R -e "install.packages('openxlsx2')"  # Add other packages if necessary
 
     - name: Run R script to reassemble CSVs
       run: |
         mkdir -p Data/output
         Rscript R/ICASA_DD_csv_to_xlsx.R
 
-    - name: Debug: List files
+    - name: Debug:List files
       run: ls -lR  # List all files and directories recursively
 
     - name: Upload reassembled XLSX file
