@@ -39,9 +39,8 @@ jobs:
           echo "Checking the contents of the Data/output directory:"
           ls -l Data/output
 
-    - name: Run R script to reassemble CSVs
-      run: |
-          Rscript R/ICASA_DD_csv_to_xlsx.R
+    - name: Run R assemble CSVs
+      run: Rscript R/ICASA_DD_csv_to_xlsx.R
 
     - name: Upload reassembled XLSX file
       uses: actions/upload-artifact@v4
