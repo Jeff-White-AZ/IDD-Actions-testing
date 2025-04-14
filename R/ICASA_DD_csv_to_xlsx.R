@@ -3,11 +3,8 @@
 #' 
 print ("starting script")
 # 2. Set working directory to script location. Define file name and paths.======
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 library(openxlsx2)
-
-path_for_xlsx <- file.path(file_name)
 subfolder_for_csv <- "Data"
 
 dictionary_sheets <- c("ReadMe", "Metadata", "Management_info", "Soils_data", "Weather_data", 
