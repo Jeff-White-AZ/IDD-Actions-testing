@@ -43,13 +43,13 @@ jobs:
           echo "Checking the contents of the Data/output directory:"
           ls -l Data/output
 
-      - name: Run R script to reassemble CSVs
+      - name: R script is called
         run: |
           cd R
           echo "Checking the contents of R directory after cd R command:"
           ls -lR .
-          Rscript ICASA_DD_csv_to_xlsx.R
-
+          Rscript -e 'source("ICASA_DD_csv_to_xlsx.R")
+          
       - name: Debug:List files post script
         run: |
           echo "Listing all files and directories recursively after script:"
