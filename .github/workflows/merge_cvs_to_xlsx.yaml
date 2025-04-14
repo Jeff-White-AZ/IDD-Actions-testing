@@ -45,6 +45,7 @@ jobs:
 
       - name: Run R script to reassemble CSVs
         run: |
+          cd R
           Rscript R/ICASA_DD_csv_to_xlsx.R
 
       - name: Debug:List files post script
