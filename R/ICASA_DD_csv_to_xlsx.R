@@ -1,7 +1,7 @@
 # 1. Introduction ==============================================================
 #' Converts a series of csv files to xlsx format for the ICASA DD.
 #' 
-print "starting script"
+print ("starting script")
 # 2. Set working directory to script location. Define file name and paths.======
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
