@@ -60,4 +60,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: reassembled-xlsx
-          path: Data/output/*.xlsx  # Adjust the path to the actual XLSX file location
+          path: Data/*.xlsx  # Adjust the path to the actual XLSX file location
