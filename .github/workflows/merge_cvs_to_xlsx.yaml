@@ -45,10 +45,7 @@ jobs:
 
       - name: R script is called
         run: |
-          cd R
-          echo "Checking the contents of R directory after cd R command:"
-          ls -lR .
-          Rscript -e 'source("ICASA_DD_csv_to_xlsx.R")'
+          Rscript -e 'source("R/ICASA_DD_csv_to_xlsx.R")'
           
       - name: Debug:List files post script
         run: |
