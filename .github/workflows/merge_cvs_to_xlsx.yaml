@@ -49,12 +49,14 @@ jobs:
           ls -l Data
 
       - name: Commit and push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_IDD }}
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           git add Combined_CSVs.xlsx
           git commit -m "Add reassembled XLSX file"
-          git push
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
 
       - name: Upload reassembled XLSX file (optional, in case you still want to keep it as an artifact)
         uses: actions/upload-artifact@v4
