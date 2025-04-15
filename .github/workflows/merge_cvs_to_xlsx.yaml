@@ -26,10 +26,6 @@ jobs:
         run: |
           R -e "install.packages('openxlsx2')"  # Add other packages if necessary
 
-      - name: Prepare output directory
-        run: |
-          mkdir -p Data/output
-
       - name: List files and directories before running R script
         run: |
           echo "Listing all files and directories recursively:"
@@ -40,9 +36,7 @@ jobs:
           ls -lR R
           echo "Checking the contents of the Data directory:"
           ls -l Data
-          echo "Checking the contents of the Data/output directory:"
-          ls -l Data/output
-
+          
       - name: R script is called
         run: |
           Rscript -e 'source("R/ICASA_DD_csv_to_xlsx.R")'
@@ -51,8 +45,6 @@ jobs:
         run: |
           echo "Listing all files and directories recursively after script:"
           ls -lR
-          echo "Checking the contents of Data/output directory:"
-          ls -l Data/output
           echo "Checking the contents of Data directory:"
           ls -l Data
 
@@ -60,4 +52,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: reassembled-xlsx
-          path: Data/*.xlsx  # Adjust the path to the actual XLSX file location
+          path: *.xlsx  # Adjust the path to the actual XLSX file location
