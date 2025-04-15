@@ -48,7 +48,15 @@ jobs:
           echo "Checking the contents of Data directory:"
           ls -l Data
 
-      - name: Upload reassembled XLSX file
+      - name: Commit and push changes
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add Combined_CSVs.xlsx
+          git commit -m "Add reassembled XLSX file"
+          git push
+
+      - name: Upload reassembled XLSX file (optional, in case you still want to keep it as an artifact)
         uses: actions/upload-artifact@v4
         with:
           name: reassembled-xlsx
