@@ -7,7 +7,8 @@ on:
 
 permissions:
   actions: read
-  contents: read
+  contents: write
+  id-token: write  # Add this permission for requesting the ID token
 
 jobs:
   build:
@@ -49,14 +50,28 @@ jobs:
           ls -l Data
 
       - name: Commit and push changes
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_IDD }}
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           git add Combined_CSVs.xlsx
           git commit -m "Add reassembled XLSX file"
-          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git HEAD:${GITHUB_REF}
+
+          # Authenticate git with the Actions OIDC token
+          echo ::add-mask::$ACTIONS_ID_TOKEN_REQUEST_TOKEN
+          http_status_code=$(curl -s -H "Authorization: token $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            -X POST -d '{"audience": "github.com"}' \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL" | jq -r '.status_code')
+
+          if [[ "$http_status_code" != 200 ]]; then
+              echo "Error authenticating with OIDC: $http_status_code"
+              exit 1
+          fi
+
+          id_token=$(curl -s -H "Authorization: token $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            -X POST -d '{"audience": "github.com"}' \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL" | jq -r '.value')
+
+          git push https://x-access-token:$id_token@github.com/${{ github.repository }}.git HEAD:main
 
       - name: Upload reassembled XLSX file (optional, in case you still want to keep it as an artifact)
         uses: actions/upload-artifact@v4
