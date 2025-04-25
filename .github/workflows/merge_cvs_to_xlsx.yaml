@@ -55,9 +55,3 @@ jobs:
           git add Combined_CSVs.xlsx
           git commit -m "Add reassembled XLSX file"
           git push
-
-      - name: Upload reassembled XLSX file (optional, in case you still want to keep it as an artifact)
-        uses: actions/upload-artifact@v4
-        with:
-          name: reassembled-xlsx
-          path: Combined_CSVs.xlsx
