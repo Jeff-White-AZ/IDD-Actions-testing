@@ -86,7 +86,7 @@
 "CRID","NPG","Napier grass","Pennisetum_purpureum","Forage, Bioenergy",,"Elephant grass","NP","Napiergrass",,"C4","Perennial",,,"Stem",,"N","Stem cutting",,,"Sugar/Energy"
 "CRID","NPL","Nopal","Opuntia ficus-indica","Fruit","Vegetable, forage","Multiple other names. Other spp.","NL",,,"CAM","Perennial",,,"Fruit",,"N","Stem cutting",,"https://en.wikipedia.org/wiki/Opuntia_ficus-indica","Fruit crops"
 "CRID","OST","Erect prickly pear","Opuntia stricta","Specialty",,,"OS",,,"CAM","Perennial",,,"Fruit",,"N","Stem cutting",,"https://en.wikipedia.org/wiki/Opuntia_stricta","Various"
-"CRID","NCO","Cochineal nopal cactus","Nopalea cochenillifera",,,,"NC",,,"CAM","Perennial",,,"Fruit",,"N","Stem cutting",,"https://en.wikipedia.org/wiki/Opuntia_cochenillifera","Various"
+"CRID","NCO","Cochineal nopal cactus","Nopalea cochenillifera","Dye stock",,,"NC",,,"CAM","Perennial",,,"Fruit",,"N","Stem cutting",,"https://en.wikipedia.org/wiki/Opuntia_cochenillifera","Various"
 "CRID","PTY","Pitaya","Stenocereus spp.","Fruit",,,"PY",,,"CAM","Perennial",,,"Fruit",,"N","Stem cutting",,"https://en.wikipedia.org/wiki/Stenocereus","Fruit crops"
 "CRID","DRF","Dragon fruit","Selenicereus spp.","Fruit",,,"DF",,,"CAM","Perennial",,,"Fruit",,"N","Stem cutting",,"https://en.wikipedia.org/wiki/Selenicereus","Fruit crops"
 "CRID","OAT","Oats","Avena sativa","Cereal, Forage",,,"OA","Oats",,"C3","Annual","LD",,"Seed",,"N","Seed",,,"Cereals"
