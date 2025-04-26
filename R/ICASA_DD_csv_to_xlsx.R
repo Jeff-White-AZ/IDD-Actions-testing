@@ -6,7 +6,7 @@ print(getwd())
 # 2. Set working directory to script location. Define file name and paths.======
 
 library(openxlsx2)
-subfolder_for_csv <- "Data"
+subfolder_for_csv <- "CSV"
 
 dictionary_sheets <- c("ReadMe", "Metadata", "Management_info", "Soils_data", "Weather_data", 
     "Measured_data", "Metadata_codes", "Management_codes", "Crop_codes",
@@ -109,7 +109,7 @@ wb$set_bookview(active_tab = 0, first_sheet = 0)
 
 # 6.2 Save the final file
 print("Saving workbook")
-saved_xlsx <- file.path("ICASA_Data_Dictionary.xlsx")
+saved_xlsx <- file.path("XLSX", "ICASA_Data_Dictionary.xlsx")
 wb_save(wb, saved_xlsx)
 
 # 5. End script with message giving location of the CSV files. =================
