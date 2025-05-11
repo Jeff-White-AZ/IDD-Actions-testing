@@ -33,9 +33,7 @@ jobs:
           ls -lR .
           echo "Checking the contents of the R directory:"
           ls -lR R
-          echo "Checking the contents of the Data directory:"
-          ls -l Data
-
+          
       - name: R script is called
         run: |
           Rscript -e 'source("R/ICASA_DD_csv_to_xlsx.R")'
@@ -43,10 +41,8 @@ jobs:
       - name: Debug:List files post script
         run: |
           echo "Listing all files and directories recursively after script:"
-          ls -lR
-          echo "Checking the contents of Data directory:"
-          ls -l Data
-
+          ls -lR XLSX
+          
       - name: Commit and push changes
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
